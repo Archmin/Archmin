@@ -28,7 +28,7 @@ Reserved. Currently there is no official method of upgrading version.
 
 ## 5. HELP, BUGS, SUGGESTIONS
  
-For help with Archmin, you can in our IRC chatroom at irc.alphachat.net &#35;archmin
+For help with Archmin, you can request assistance in our IRC chatroom at irc.alphachat.net &#35;archmin
  
 To report a bug, please [open an issue](https://github.com/Archmin/Archmin/issues/new).
 Thanks for contributing by reporting issues!
