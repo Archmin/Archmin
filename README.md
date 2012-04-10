@@ -12,7 +12,7 @@ Archmin
 ------------------------------------------------------------
 ## 1. DESCRIPTION
  
-Placeholder.
+Server administration panel written in perl, currently targeted at Arch Linux based systems.
 
 ## 2. DEVELOPERS
  
