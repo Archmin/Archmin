@@ -17,6 +17,7 @@ Placeholder.
 ## 2. DEVELOPERS
  
 + Matthew "mattwb65" Barksdale &lt;mattwb65@gmail.com&gt;
++ Lucas "Lucashayes" Hayes &lt;lucashayes@hindbra.in&gt;
 
 ## 3. HOW TO INSTALL
  
