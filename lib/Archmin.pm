@@ -1,6 +1,6 @@
 package Archmin;
 use Mojo::Base 'Mojolicious';
-use Mojo::Util 'hmac_md5_sum';
+use Digest::SHA 'sha256_hex';
 
 # This method will run once at server start
 sub startup {
@@ -10,7 +10,7 @@ sub startup {
 
   # Configuration parser
   my $config = $self->{config} = $self->plugin('yaml_config', {
-            file      => 'etc/config.yaml',
+            file      => 'conf/config.yaml',
             stash_key => 'config',
             class     => 'YAML::XS'
   });
@@ -27,7 +27,11 @@ sub startup {
 
         my $users = $self->app->{config}->{users};
 
-        return $users->{$uid} if $users->{$uid};
+        if ($users->{$uid})
+        {
+            $users->{$uid}->{username} = $uid;
+            return $users->{$uid};
+        }
 
         return;
     },
@@ -36,7 +40,8 @@ sub startup {
 
         my $users = $self->app->{config}->{users};
 
-        return $username if $users->{$username} && hmac_md5_sum($password) eq $users->{$username};
+        return $username if $users->{$username} && sha256_hex($password) eq 
+            $users->{$username}->{password};
 
         return;
     },

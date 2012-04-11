@@ -51,7 +51,7 @@
               <li><a href="#contact">Contact</a></li>
             </ul>
 %# @TODO: Add login helper
-            <p class="navbar-text pull-right">Logged in as <a href="#"><%= user %></a></p>
+            <p class="navbar-text pull-right">Logged in as <a href="#"><%= user->{username} %></a></p>
           </div><!--/.nav-collapse -->
         </div>
       </div>
