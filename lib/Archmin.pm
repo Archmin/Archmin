@@ -4,7 +4,6 @@ use Mojo::Base 'Mojolicious';
 # This method will run once at server start
 sub startup {
   my $self = shift;
-
   # Documentation browser under "/perldoc"
   $self->plugin('PODRenderer');
   # Configuration parser
@@ -18,7 +17,8 @@ sub startup {
   $self->secret($config->{session}->{secret});
   # Router
   my $r = $self->routes;
-
+  # Set route namespace to Archmin::Controller
+  $r->namespace('Archmin::Controller');
   # Normal route to controller
   $r->route('/')->to('example#welcome');
 }
