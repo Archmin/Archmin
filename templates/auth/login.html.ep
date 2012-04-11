@@ -1,10 +1,24 @@
 % layout 'default';
 % title 'Login';
+% content_for 'login_error' => begin
+  % if ( defined($self->session->{login_error}) && ( scalar( @{ $self->session->{login_error}} ) > 0 ) ){
+
+      %foreach my $notice ( @{ $self->session->{login_error}} ){
+      <div class="alert alert-error">
+      <a class="close" data-dismiss="alert">×</a>
+          <p><%= $notice; %></p>
+      </div>
+      %}
+
+  %delete($self->session->{login_error});
+  %}
+%end
 <div class="modal fade" id="loginModal">
   <div class="modal-header">
     <h3>Login</h3>
   </div>
   <div class="modal-body">
+    <%= content_for 'login_error' %>
     <%= form_for login=> (method => 'POST', class => 'form-inline') => begin %>
       <%= text_field 'username', placeholder => 'Username' %>
       <%= password_field 'password', placeholder => 'Password' %>
