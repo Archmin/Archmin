@@ -1,4 +1,4 @@
-package Archmin::Controller::Login;
+package Archmin::Controller::Auth;
 use Mojo::Base 'Mojolicious::Controller';
 
 # We need to setup form validation too.
@@ -7,7 +7,7 @@ use Mojo::Base 'Mojolicious::Controller';
 sub index {
   my $self = shift;
 
-  # Render template "login/index.html.ep" with message
+  # Render template "auth/index.html.ep" with message
   $self->render( message => 'Welcome to the Mojolicious real-time web framework!');
 
 }
@@ -19,6 +19,5 @@ sub check {
   my $pass = $self->param('password');
   # TODO: Check login.
 }
-
 
 1;
