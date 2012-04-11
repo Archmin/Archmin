@@ -51,7 +51,7 @@
               <li><a href="#contact">Contact</a></li>
             </ul>
 %# @TODO: Add login helper
-            <p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>
+            <p class="navbar-text pull-right">Logged in as <a href="#"><%= user %></a></p>
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -101,6 +101,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="assets/js/jquery-1.7.1.min.js"><\/script>')</script>
     <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/archmin.js"></script>
 
   </body>
 </html>

@@ -1,0 +1,4 @@
+% layout 'default';
+% title 'Dashboard';
+<h2><%= $message %></h2>
+We'll have widgets here at some point...I think.

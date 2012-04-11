@@ -2,5 +2,8 @@
 session:
     # Session passphrase. Change this!
     secret: "sssh secret"
+# User logins.
+users:
+    admin: "4e400988a005437959ddc61cdf06a997"
 # Have you read the configuration?
-die: 1
+die: 0
