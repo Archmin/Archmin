@@ -45,29 +45,17 @@ sub startup {
   
   # Router
   my $r = $self->routes;
-<<<<<<< HEAD
+  # Set route namespace to Archmin::Controller
+  $r->namespace('Archmin::Controller');
 
-  $r->route('/login')->via('GET')->to('auth#login');
-  $r->route('/login')->via('POST')->to('auth#create');
+  $r->route('/login')->via('GET')->to('auth#login')->name('auth_login');
+  $r->route('/login')->via('POST')->to('auth#create')->name('auth_create');
 
   # Require authentication
-  $r->route('/')->over(authenticated => 1)->to('dashboard#index');
+  $r->route('/')->over(authenticated => 1)->to('dashboard#index')->name('user_home');
 
   # All else fails, fall back to auth
   $r->route('/')->to('auth#login');
-
-
-=======
-  # Set route namespace to Archmin::Controller
-  $r->namespace('Archmin::Controller');
-  # TODO: Rename example controller.
-  # Normal route to controller
-  $r->route('/')->to('example#welcome')->name('home');
-  # Setup bridge for login.
-  my $rl = $r->bridge('/login')->to('auth#index');
-  $rl->route->via('get')->to('auth#index')->name('auth_login_form');
-  $rl->route->via('post')->to('auth#check')->name('auth_login_check');
->>>>>>> e0a6de9349735edfbfbfc529e5369c342558d499
 }
 
 1;

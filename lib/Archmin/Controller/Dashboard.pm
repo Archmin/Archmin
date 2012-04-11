@@ -1,4 +1,4 @@
-package Archmin::Dashboard;
+package Archmin::Controller::Dashboard;
 use Mojo::Base 'Mojolicious::Controller';
 
 sub index {
