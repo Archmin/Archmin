@@ -1,0 +1,8 @@
+% layout 'default';
+% title 'Archmin :: Login';
+<h2><%= $message %></h2>
+This page was generated from the template
+"templates/login/index.html.ep" and the layout
+"templates/layouts/default.html.ep",
+<a href="<%== url_for %>">click here</a>
+to reload the page.

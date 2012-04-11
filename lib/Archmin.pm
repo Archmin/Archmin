@@ -19,8 +19,13 @@ sub startup {
   my $r = $self->routes;
   # Set route namespace to Archmin::Controller
   $r->namespace('Archmin::Controller');
+  # TODO: Rename example controller and use route names.
   # Normal route to controller
   $r->route('/')->to('example#welcome');
+  # Setup bridge for login.
+  my $rl = $r->bridge('/login')->to('login#index');
+  $rl->route->via('get')->to('login#index');
+  $rl->route->via('post')->to('login#check');
 }
 
 1;
