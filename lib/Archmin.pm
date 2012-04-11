@@ -5,7 +5,6 @@ use Mojo::Util 'hmac_md5_sum';
 # This method will run once at server start
 sub startup {
   my $self = shift;
-
   # Documentation browser under "/perldoc"
   $self->plugin('PODRenderer');
 
@@ -46,6 +45,7 @@ sub startup {
   
   # Router
   my $r = $self->routes;
+<<<<<<< HEAD
 
   $r->route('/login')->via('GET')->to('auth#login');
   $r->route('/login')->via('POST')->to('auth#create');
@@ -57,6 +57,17 @@ sub startup {
   $r->route('/')->to('auth#login');
 
 
+=======
+  # Set route namespace to Archmin::Controller
+  $r->namespace('Archmin::Controller');
+  # TODO: Rename example controller.
+  # Normal route to controller
+  $r->route('/')->to('example#welcome')->name('home');
+  # Setup bridge for login.
+  my $rl = $r->bridge('/login')->to('auth#index');
+  $rl->route->via('get')->to('auth#index')->name('auth_login_form');
+  $rl->route->via('post')->to('auth#check')->name('auth_login_check');
+>>>>>>> e0a6de9349735edfbfbfc529e5369c342558d499
 }
 
 1;
