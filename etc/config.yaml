@@ -1,2 +1,6 @@
+# Session settings. 
+session:
+    # Session passphrase. Change this!
+    secret: "sssh secret"
 # Have you read the configuration?
 die: 1

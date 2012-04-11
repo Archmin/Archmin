@@ -9,12 +9,13 @@ sub startup {
   $self->plugin('PODRenderer');
   # Configuration parser
   my $config = $self->{config} = $self->plugin('yaml_config', {
-          file      => 'etc/config.yaml',
-          stash_key => 'config',
-          class     => 'YAML::XS'
+            file      => 'etc/config.yaml',
+            stash_key => 'config',
+            class     => 'YAML::XS'
   });
   print "Please read the configuration file and try again.\n" and exit if $config->{die};
-
+  # Session settings.
+  $self->secret($config->{session}->{secret});
   # Router
   my $r = $self->routes;
 
