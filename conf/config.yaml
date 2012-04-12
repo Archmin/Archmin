@@ -10,4 +10,4 @@ users:
         group: admin
 
 # Have you read the configuration?
-die: 0
+die: 1

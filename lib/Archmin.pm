@@ -1,12 +1,14 @@
 package Archmin;
 use Mojo::Base 'Mojolicious';
 use Digest::SHA 'sha256_hex';
+use Digest::MD5 'md5_hex';
 
 # This method will run once at server start
 sub startup {
   my $self = shift;
   # Documentation browser under "/perldoc"
   $self->plugin('PODRenderer');
+
 
   # Configuration parser
   my $config = $self->{config} = $self->plugin('yaml_config', {
@@ -47,6 +49,13 @@ sub startup {
     },
     current_user_fn => 'user',
   });
+
+  # Gravatar helper
+  $self->helper(gravatar_for => sub {
+     my ($self, $email, $size) = @_;
+     return '<img src="http://www.gravatar.com/avatar/' . 
+        md5_hex(lc($email)) . '?s=' . $size . '&d=retro" alt="gravatar" style="margin-top: -5px;">';
+  });
   
   # Router
   my $r = $self->routes;
@@ -57,10 +66,11 @@ sub startup {
   $r->route('/login')->via('POST')->to('auth#create')->name('auth_create');
 
   # Require authentication
-  $r->route('/')->over(authenticated => 1)->to('dashboard#index')->name('user_home');
+  $r->route('/logout')->over(authenticated => 1)->to('auth#delete')->name('auth_delete');
+  $r->route('/')->over(authenticated => 1)->to('dashboard#index')->name('dashboard');
 
   # All else fails, fall back to auth
-  $r->route('/')->to('auth#login');
+  $r->route('/')->to('auth_login');
 }
 
 1;
